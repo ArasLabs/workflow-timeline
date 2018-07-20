@@ -1,0 +1,63 @@
+﻿<AML>
+ <Item type="Form" id="8AFF4BF0715642ABB9E95DFDB488AF67" action="add">
+  <category_form>0</category_form>
+  <height>234</height>
+  <stylesheet><![CDATA[../styles/default.css]]></stylesheet>
+  <width>699</width>
+  <name>My Process Map</name>
+  <Relationships>
+   <Item type="Body" id="7F3012C6C31F40EFA4FB6D57D8221B1A" action="add">
+    <bg_color>#FFFFFF</bg_color>
+    <css>@import "../javascript/visjs/dist/vis-timeline-graph2d.min.css"</css>
+    <sort_order>128</sort_order>
+    <source_id keyed_name="My Process Map" type="Form">8AFF4BF0715642ABB9E95DFDB488AF67</source_id>
+    <Relationships>
+     <Item type="Field" id="CB97497B873E4D408F221BB48651E23C" action="add">
+      <border_width>0</border_width>
+      <display_length_unit>px</display_length_unit>
+      <field_type>html</field_type>
+      <font_color>#000000</font_color>
+      <font_family>tahoma, arial, helvetica, sans-serif</font_family>
+      <font_size>8pt</font_size>
+      <font_weight>bold</font_weight>
+      <html_code><![CDATA[<style>
+#visualization {
+    height: 600px; 
+    width: 1800px;
+}
+.vis-item.active {
+    background-color: #76A797;
+    border-color: #5E8579;
+}
+.vis-item.pending {
+    background-color: #EDC87E;
+    border-color: #BDA064;
+}
+</style>
+<div id="visualization"> </div>]]></html_code>
+      <is_disabled>0</is_disabled>
+      <is_visible>1</is_visible>
+      <label_position>top</label_position>
+      <list_no_blank>0</list_no_blank>
+      <sort_order>128</sort_order>
+      <source_id keyed_name="7F3012C6C31F40EFA4FB6D57D8221B1A" type="Body">7F3012C6C31F40EFA4FB6D57D8221B1A</source_id>
+      <tab_stop>1</tab_stop>
+      <x>0</x>
+      <y>0</y>
+      <name>timeline</name>
+     </Item>
+    </Relationships>
+   </Item>
+   <Item type="Form Event" id="D43464BBE89A449D80D02081A3C17F0E" action="add">
+    <form_event>onload</form_event>
+    <related_id keyed_name="labs_WorkflowTimeline" type="Method">
+     <Item type="Method" action="get" select="id">
+      <name>labs_WorkflowTimeline</name>
+     </Item>
+    </related_id>
+    <sort_order>128</sort_order>
+    <source_id keyed_name="My Process Map" type="Form">8AFF4BF0715642ABB9E95DFDB488AF67</source_id>
+   </Item>
+  </Relationships>
+ </Item>
+</AML>

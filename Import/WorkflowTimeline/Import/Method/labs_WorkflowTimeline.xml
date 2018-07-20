@@ -1,0 +1,165 @@
+﻿<AML>
+ <Item type="Method" id="94C8DDB16EEC422CB20B5FDD53930131" action="add">
+  <execution_allowed_to keyed_name="World" type="Identity">A73B655731924CD0B027E4F4D5FCC0A9</execution_allowed_to>
+  <method_code><![CDATA[/* 
+   About: This method gets the parent item's workflow process and builds a timeline view of the activities using Vis.js.
+   How to use it: Attach this method to a RelationshipType's relationship view form as an OnLoad form event.
+   Requirements: Vis.js and Underscore.js must exist in the code tree
+*/
+
+require([
+    "../javascript/visjs/dist/vis.js",
+    "../javascript/underscore-min.js"
+], function(
+    vis
+) {
+    function loadViz() {
+
+        // Setup for visjs data objects.
+        var now = vis.moment();
+        var items = new vis.DataSet();
+        var groups = new vis.DataSet();
+        
+        var inn = top.aras.newIOMInnovator();
+        var topItem = document.thisItem;
+
+        // Get the Activities for this Item's Workflow Process.
+        var wf = inn.newItem("Workflow", "get");
+        wf.setProperty("source_id", topItem.getID());
+        var wfp = wf.createRelatedItem("Workflow Process", "get");
+        var wpa = wfp.createRelationship("Workflow Process Activity", "get");
+        var activity = inn.newItem("Activity","get");
+        activity.setProperty("is_auto","0");  // don't get auto activities like start and end
+        wpa.setRelatedItem(activity);
+        wf = wf.apply();
+        
+        var activities = wf.getItemsByXPath(".//Item[@type='Activity']");
+
+        // Reorder Activities and create groups.
+        var ordActivities = [];
+        var groupNames = [];
+        
+        for (var i = 0; i < activities.getItemCount(); i++) {
+            var actItem = activities.getItemByIndex(i);
+            
+            // Create a temp object to represent a visjs timeline "item" object.
+            var ordActivity = {
+                name: actItem.getProperty("name", ""),
+                state: actItem.getProperty("state", ""),
+                aId: actItem.getID(),
+                id: actItem.getProperty("name", "") + ' (' + i + ')',
+                createdOn: actItem.getProperty("created_on", ""),
+                activeDate: actItem.getProperty("active_date", ""),
+                closedDate: actItem.getProperty("closed_date", ""),
+                expectedDuration: actItem.getProperty("expected_duration", "1")
+            };
+            
+            // Set the mainSort value to help us sort objects on both state and name.
+            switch (ordActivity.state) {
+                case "Closed":
+                    ordActivity.mainSort = 1;
+                    break;
+                case "Active":
+                    ordActivity.mainSort = 2;
+                    break;
+                case "Pending":
+                    ordActivity.mainSort = 3;
+                    break;
+                case "":
+                    break;
+            }
+            ordActivities.push(ordActivity);
+
+            /* 
+               Each activity in the workflow will have a group (like a swimlane).
+               If this item's workflow process has looped, there may be multiple instances of an activity. 
+               We need to make sure we only add each activity name to the group list once.
+            */
+            if (_.indexOf(groupNames, ordActivity.name) === -1) {
+                groupNames.push(ordActivity.name);
+                groups.add({
+                    id: ordActivity.name,
+                    order: ordActivity.name,
+                    content: ordActivity.name,
+                });
+            }
+        }
+
+        /* 
+           Sort activities by mainSort (state), then name
+           Example: [{act2,closed},{act3,active},{act1,closed},{act3,closed},{act4,closed}]
+           Result:  [{act1,closed},{act2,closed},{act3,closed},{act3,active},{act4,closed}]
+        */
+        ordActivities = _.sortBy((_.sortBy(ordActivities, 'mainSort')), 'name');
+
+        // Create visjs timeline "item" objects based on our sorted temp objects (ordActivities).
+        var trailingDate;
+        for (i = 0; i < ordActivities.length; i++) {
+            var ordAct = ordActivities[i];
+            
+            var item = {
+                id: ordAct.aId + '-' + i,
+                group: ordAct.name,
+                content: ordAct.name
+            };
+
+            /* 
+               Start/end dates of timeline items are based on the active_date/closed_date 
+               of their corresponding Activity Items.
+            
+               Note: Since "pending" Activities do not have an active or closed date, 
+               we estimate using the close date of the previous activity and calculate 
+               an end date using the expected duration of the activity.
+            */
+            var expectedDuration = parseInt(ordAct.expectedDuration);
+            switch (ordAct.state) {
+                case "Active":
+                    item.start = vis.moment(ordAct.activeDate);
+                    item.end = item.start.clone().add(expectedDuration, 'd');
+                    trailingDate = item.end.format();
+                    item.className = "active";
+                    item.type = "range";
+                    break;
+                case "Closed":
+                    item.start = vis.moment(ordAct.activeDate);
+                    item.end = vis.moment(ordAct.closedDate);
+                    trailingDate = item.end.format();
+                    item.className = "closed";
+                    item.type = "range";
+                    break;
+                case "Pending":
+                    if (trailingDate) {
+                        item.start = vis.moment(trailingDate);
+                    } else {
+                        item.start = vis.moment(ordAct.createdOn);
+                    }
+                    item.end = item.start.clone().add(expectedDuration, 'd');
+                    trailingDate = item.end.format();
+                    item.className = "pending";
+                    item.type = "range";
+                    break;
+                case "":
+                    break;
+            }
+            items.add(item);
+        }
+    
+        // instantiate the timeline view
+        var container = document.getElementById('visualization');
+        var options = {
+            groupOrder: 'order'
+        };
+
+        var timeline = new vis.Timeline(container);
+        timeline.setOptions(options);
+        timeline.setGroups(groups);
+        timeline.setItems(items);
+    }
+
+    // get this workflow and load timeline view
+    loadViz();
+});]]></method_code>
+  <method_type>JavaScript</method_type>
+  <name>labs_WorkflowTimeline</name>
+ </Item>
+</AML>

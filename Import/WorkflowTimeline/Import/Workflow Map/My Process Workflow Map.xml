@@ -1,0 +1,369 @@
+﻿<AML>
+ <Item type="Workflow Map" id="729F44042D2A44169E19EC30841911B0" action="add">
+  <description xml:lang="en">A sample workflow for the Workflow Timeline community project</description>
+  <label xml:lang="en">My Process Workflow</label>
+  <node_bg_color>       </node_bg_color>
+  <node_label1_color>       </node_label1_color>
+  <node_label1_font />
+  <node_label2_color>       </node_label2_color>
+  <node_label2_font />
+  <node_name_color>       </node_name_color>
+  <node_name_font />
+  <node_size />
+  <process_owner keyed_name="Creator" type="Identity">
+   <Item type="Identity" action="get" select="id">
+    <name>Creator</name>
+   </Item>
+  </process_owner>
+  <transition_line_color>       </transition_line_color>
+  <transition_name_color>       </transition_name_color>
+  <transition_name_font />
+  <name>My Process Workflow Map</name>
+  <Relationships>
+   <Item type="Workflow Map Activity" action="add">
+    <related_id keyed_name="6-EndProcess" type="Activity Template">
+     <Item type="Activity Template" id="546EAB296EA746D9A9FB42AF5BFD8F08" action="add">
+      <can_delegate>0</can_delegate>
+      <can_refuse>0</can_refuse>
+      <consolidate_ondelegate>0</consolidate_ondelegate>
+      <expected_duration>0</expected_duration>
+      <icon>../images/Delete.svg</icon>
+      <is_auto>1</is_auto>
+      <is_end>1</is_end>
+      <is_start>0</is_start>
+      <label xml:lang="en">End Process</label>
+      <message xml:lang="en">Workflow End</message>
+      <priority>1</priority>
+      <reminder_count>0</reminder_count>
+      <reminder_interval>0</reminder_interval>
+      <timeout_duration>0</timeout_duration>
+      <wait_for_all_inputs>0</wait_for_all_inputs>
+      <wait_for_all_votes>0</wait_for_all_votes>
+      <x>1256</x>
+      <y>139</y>
+      <name>6-EndProcess</name>
+     </Item>
+    </related_id>
+    <sort_order>128</sort_order>
+    <source_id keyed_name="My Process Workflow Map" type="Workflow Map">729F44042D2A44169E19EC30841911B0</source_id>
+   </Item>
+   <Item type="Workflow Map Activity" action="add">
+    <related_id keyed_name="Start" type="Activity Template">
+     <Item type="Activity Template" id="B66EAF40EE134F318DB5F01FDC6335D2" action="add">
+      <can_delegate>0</can_delegate>
+      <can_refuse>0</can_refuse>
+      <consolidate_ondelegate>0</consolidate_ondelegate>
+      <expected_duration>0</expected_duration>
+      <icon>../images/WorkflowStart.svg</icon>
+      <is_auto>1</is_auto>
+      <is_end>0</is_end>
+      <is_start>1</is_start>
+      <message xml:lang="en">Workflow Start</message>
+      <priority>2</priority>
+      <reminder_count>0</reminder_count>
+      <reminder_interval>0</reminder_interval>
+      <timeout_duration>0</timeout_duration>
+      <wait_for_all_inputs>0</wait_for_all_inputs>
+      <wait_for_all_votes>0</wait_for_all_votes>
+      <x>15</x>
+      <y>141</y>
+      <name>Start</name>
+      <Relationships>
+       <Item type="Workflow Map Path" id="86C373786BF048D2B980915C79E1A18F" action="add">
+        <authentication>none</authentication>
+        <is_default>1</is_default>
+        <is_override>0</is_override>
+        <label xml:lang="en">Go</label>
+        <name>Go</name>
+        <related_id>324CEB62922D404EAAEBEB20109E798E</related_id>
+        <segments />
+        <sort_order>128</sort_order>
+        <source_id keyed_name="Start" type="Activity Template">B66EAF40EE134F318DB5F01FDC6335D2</source_id>
+        <x>55</x>
+        <y>-13</y>
+       </Item>
+      </Relationships>
+     </Item>
+    </related_id>
+    <sort_order>256</sort_order>
+    <source_id keyed_name="My Process Workflow Map" type="Workflow Map">729F44042D2A44169E19EC30841911B0</source_id>
+   </Item>
+   <Item type="Workflow Map Activity" action="add">
+    <related_id keyed_name="1-AssignResources" type="Activity Template">
+     <Item type="Activity Template" id="324CEB62922D404EAAEBEB20109E798E" action="add">
+      <can_delegate>1</can_delegate>
+      <can_refuse>1</can_refuse>
+      <consolidate_ondelegate>0</consolidate_ondelegate>
+      <expected_duration>1</expected_duration>
+      <icon>../images/WorkflowNode.svg</icon>
+      <is_auto>0</is_auto>
+      <is_end>0</is_end>
+      <is_start>0</is_start>
+      <label xml:lang="en">Assign Resources</label>
+      <message xml:lang="en">Assign resources to work on this project</message>
+      <wait_for_all_inputs>0</wait_for_all_inputs>
+      <wait_for_all_votes>0</wait_for_all_votes>
+      <x>172</x>
+      <y>140</y>
+      <name>1-AssignResources</name>
+      <Relationships>
+       <Item type="Activity Template Assignment" id="721A8C43A35A430E81622A8070A07070" action="add">
+        <related_id keyed_name="World" type="Identity">
+         <Item type="Identity" action="get" select="id">
+          <name>World</name>
+         </Item>
+        </related_id>
+        <sort_order>128</sort_order>
+        <source_id keyed_name="1-AssignResources" type="Activity Template">324CEB62922D404EAAEBEB20109E798E</source_id>
+        <is_required>0</is_required>
+        <for_all_members>0</for_all_members>
+        <voting_weight>100</voting_weight>
+       </Item>
+       <Item type="Workflow Map Path" id="D553D5A99C664BFFBCF13EB571D1BBCB" action="add">
+        <authentication>none</authentication>
+        <is_default>0</is_default>
+        <is_override>0</is_override>
+        <label xml:lang="en">Send assignment to resources</label>
+        <name>Assign</name>
+        <related_id>7832D9DE9AC14802B2FD525911F19507</related_id>
+        <segments />
+        <sort_order>128</sort_order>
+        <source_id keyed_name="1-AssignResources" type="Activity Template">324CEB62922D404EAAEBEB20109E798E</source_id>
+        <x>29</x>
+        <y>-10</y>
+       </Item>
+      </Relationships>
+     </Item>
+    </related_id>
+    <sort_order>384</sort_order>
+    <source_id keyed_name="My Process Workflow Map" type="Workflow Map">729F44042D2A44169E19EC30841911B0</source_id>
+   </Item>
+   <Item type="Workflow Map Activity" action="add">
+    <related_id keyed_name="2-Research" type="Activity Template">
+     <Item type="Activity Template" id="7832D9DE9AC14802B2FD525911F19507" action="add">
+      <can_delegate>1</can_delegate>
+      <can_refuse>1</can_refuse>
+      <consolidate_ondelegate>0</consolidate_ondelegate>
+      <expected_duration>3</expected_duration>
+      <icon>../images/WorkflowNode.svg</icon>
+      <is_auto>0</is_auto>
+      <is_end>0</is_end>
+      <is_start>0</is_start>
+      <label xml:lang="en">Research</label>
+      <message xml:lang="en">Research potential solutions for the project</message>
+      <wait_for_all_inputs>0</wait_for_all_inputs>
+      <wait_for_all_votes>0</wait_for_all_votes>
+      <x>383</x>
+      <y>141</y>
+      <name>2-Research</name>
+      <Relationships>
+       <Item type="Activity Template Assignment" id="92EAA699DA5B4EAD9AF97E06A21102F0" action="add">
+        <related_id keyed_name="World" type="Identity">
+         <Item type="Identity" action="get" select="id">
+          <name>World</name>
+         </Item>
+        </related_id>
+        <sort_order>128</sort_order>
+        <source_id keyed_name="2-Research" type="Activity Template">7832D9DE9AC14802B2FD525911F19507</source_id>
+        <is_required>0</is_required>
+        <for_all_members>0</for_all_members>
+        <voting_weight>100</voting_weight>
+       </Item>
+       <Item type="Workflow Map Path" id="F3EF63D3A7634272AD51BF00390000C1" action="add">
+        <authentication>none</authentication>
+        <is_default>0</is_default>
+        <is_override>0</is_override>
+        <label xml:lang="en">Submit proposed solution for review</label>
+        <name>Propose</name>
+        <related_id>A0BFF266B6EB450FAC630EC5673D29BF</related_id>
+        <segments>515,198</segments>
+        <sort_order>128</sort_order>
+        <source_id keyed_name="2-Research" type="Activity Template">7832D9DE9AC14802B2FD525911F19507</source_id>
+        <x>37</x>
+        <y>69</y>
+       </Item>
+      </Relationships>
+     </Item>
+    </related_id>
+    <sort_order>512</sort_order>
+    <source_id keyed_name="My Process Workflow Map" type="Workflow Map">729F44042D2A44169E19EC30841911B0</source_id>
+   </Item>
+   <Item type="Workflow Map Activity" action="add">
+    <related_id keyed_name="3-ReviewSolution" type="Activity Template">
+     <Item type="Activity Template" id="A0BFF266B6EB450FAC630EC5673D29BF" action="add">
+      <can_delegate>1</can_delegate>
+      <can_refuse>1</can_refuse>
+      <consolidate_ondelegate>0</consolidate_ondelegate>
+      <expected_duration>1</expected_duration>
+      <icon>../images/WorkflowNode.svg</icon>
+      <is_auto>0</is_auto>
+      <is_end>0</is_end>
+      <is_start>0</is_start>
+      <label xml:lang="en">Review Solution</label>
+      <message xml:lang="en">Review the proposed solution for this project</message>
+      <wait_for_all_inputs>0</wait_for_all_inputs>
+      <wait_for_all_votes>0</wait_for_all_votes>
+      <x>648</x>
+      <y>140</y>
+      <name>3-ReviewSolution</name>
+      <Relationships>
+       <Item type="Activity Template Assignment" id="FDD77E4A5E784F07B575B298EDB8A641" action="add">
+        <related_id keyed_name="World" type="Identity">
+         <Item type="Identity" action="get" select="id">
+          <name>World</name>
+         </Item>
+        </related_id>
+        <sort_order>128</sort_order>
+        <source_id keyed_name="3-ReviewSolution" type="Activity Template">A0BFF266B6EB450FAC630EC5673D29BF</source_id>
+        <is_required>0</is_required>
+        <for_all_members>0</for_all_members>
+        <voting_weight>100</voting_weight>
+       </Item>
+       <Item type="Workflow Map Path" id="614FCC808D6F47819C11571B50E43134" action="add">
+        <authentication>none</authentication>
+        <is_default>0</is_default>
+        <is_override>0</is_override>
+        <label xml:lang="en">Approve proposed solution</label>
+        <name>Approve</name>
+        <related_id>49098374AC524314BEC719EA9D71B2F3</related_id>
+        <segments />
+        <sort_order>128</sort_order>
+        <source_id keyed_name="3-ReviewSolution" type="Activity Template">A0BFF266B6EB450FAC630EC5673D29BF</source_id>
+        <x>8</x>
+        <y>62</y>
+       </Item>
+       <Item type="Workflow Map Path" id="6FF677B6E0E44BCE8A5CA551FFD5DDF5" action="add">
+        <authentication>none</authentication>
+        <is_default>0</is_default>
+        <is_override>0</is_override>
+        <label xml:lang="en">Reject proposed solution</label>
+        <name>Reject</name>
+        <related_id>7832D9DE9AC14802B2FD525911F19507</related_id>
+        <segments>520,111</segments>
+        <sort_order>256</sort_order>
+        <source_id keyed_name="3-ReviewSolution" type="Activity Template">A0BFF266B6EB450FAC630EC5673D29BF</source_id>
+        <x>-197</x>
+        <y>-53</y>
+       </Item>
+      </Relationships>
+     </Item>
+    </related_id>
+    <sort_order>640</sort_order>
+    <source_id keyed_name="My Process Workflow Map" type="Workflow Map">729F44042D2A44169E19EC30841911B0</source_id>
+   </Item>
+   <Item type="Workflow Map Activity" action="add">
+    <related_id keyed_name="4-ImplementSolution" type="Activity Template">
+     <Item type="Activity Template" id="49098374AC524314BEC719EA9D71B2F3" action="add">
+      <can_delegate>1</can_delegate>
+      <can_refuse>1</can_refuse>
+      <consolidate_ondelegate>0</consolidate_ondelegate>
+      <expected_duration>5</expected_duration>
+      <icon>../images/WorkflowNode.svg</icon>
+      <is_auto>0</is_auto>
+      <is_end>0</is_end>
+      <is_start>0</is_start>
+      <label xml:lang="en">Implement Solution</label>
+      <message xml:lang="en">Implement the approved solution for this project</message>
+      <wait_for_all_inputs>0</wait_for_all_inputs>
+      <wait_for_all_votes>0</wait_for_all_votes>
+      <x>839</x>
+      <y>206</y>
+      <name>4-ImplementSolution</name>
+      <Relationships>
+       <Item type="Activity Template Assignment" id="AA56562F8DDA43C8984276B0492890DA" action="add">
+        <related_id keyed_name="World" type="Identity">
+         <Item type="Identity" action="get" select="id">
+          <name>World</name>
+         </Item>
+        </related_id>
+        <sort_order>128</sort_order>
+        <source_id keyed_name="4-ImplementSolution" type="Activity Template">49098374AC524314BEC719EA9D71B2F3</source_id>
+        <is_required>0</is_required>
+        <for_all_members>0</for_all_members>
+        <voting_weight>100</voting_weight>
+       </Item>
+       <Item type="Workflow Map Path" id="01289C932BC942158ADF402FF1D558C4" action="add">
+        <authentication>none</authentication>
+        <is_default>0</is_default>
+        <is_override>0</is_override>
+        <label xml:lang="en">Submit solution for confirmation</label>
+        <name>Submit</name>
+        <related_id>F5B71A54830849DB92A91EC65AC565AC</related_id>
+        <segments />
+        <sort_order>128</sort_order>
+        <source_id keyed_name="4-ImplementSolution" type="Activity Template">49098374AC524314BEC719EA9D71B2F3</source_id>
+        <x>51</x>
+        <y>-5</y>
+       </Item>
+      </Relationships>
+     </Item>
+    </related_id>
+    <sort_order>768</sort_order>
+    <source_id keyed_name="My Process Workflow Map" type="Workflow Map">729F44042D2A44169E19EC30841911B0</source_id>
+   </Item>
+   <Item type="Workflow Map Activity" action="add">
+    <related_id keyed_name="5-ConfirmSolution" type="Activity Template">
+     <Item type="Activity Template" id="F5B71A54830849DB92A91EC65AC565AC" action="add">
+      <can_delegate>1</can_delegate>
+      <can_refuse>1</can_refuse>
+      <consolidate_ondelegate>0</consolidate_ondelegate>
+      <expected_duration>1</expected_duration>
+      <icon>../images/WorkflowNode.svg</icon>
+      <is_auto>0</is_auto>
+      <is_end>0</is_end>
+      <is_start>0</is_start>
+      <label xml:lang="en">Confirm Solution</label>
+      <message xml:lang="en">Confirm that the implemented solution resolves the goal of this project</message>
+      <wait_for_all_inputs>0</wait_for_all_inputs>
+      <wait_for_all_votes>0</wait_for_all_votes>
+      <x>1053</x>
+      <y>137</y>
+      <name>5-ConfirmSolution</name>
+      <Relationships>
+       <Item type="Activity Template Assignment" id="E12F0249D4E147CD9203488CA8D4FDDC" action="add">
+        <related_id keyed_name="World" type="Identity">
+         <Item type="Identity" action="get" select="id">
+          <name>World</name>
+         </Item>
+        </related_id>
+        <sort_order>128</sort_order>
+        <source_id keyed_name="5-ConfirmSolution" type="Activity Template">F5B71A54830849DB92A91EC65AC565AC</source_id>
+        <is_required>0</is_required>
+        <for_all_members>0</for_all_members>
+        <voting_weight>100</voting_weight>
+       </Item>
+       <Item type="Workflow Map Path" id="EB236D4A163C4756ABF5DC41C64705A2" action="add">
+        <authentication>none</authentication>
+        <is_default>0</is_default>
+        <is_override>0</is_override>
+        <label xml:lang="en">Confirm solution and end process</label>
+        <name>Confirm</name>
+        <related_id>546EAB296EA746D9A9FB42AF5BFD8F08</related_id>
+        <segments />
+        <sort_order>128</sort_order>
+        <source_id keyed_name="5-ConfirmSolution" type="Activity Template">F5B71A54830849DB92A91EC65AC565AC</source_id>
+        <x>11</x>
+        <y>-18</y>
+       </Item>
+       <Item type="Workflow Map Path" id="0EA8337D51844E36BC23FA4661A5A911" action="add">
+        <authentication>none</authentication>
+        <is_default>0</is_default>
+        <is_override>0</is_override>
+        <label xml:lang="en">Send back for further review</label>
+        <name>Reject</name>
+        <related_id>A0BFF266B6EB450FAC630EC5673D29BF</related_id>
+        <segments>849,101</segments>
+        <sort_order>256</sort_order>
+        <source_id keyed_name="5-ConfirmSolution" type="Activity Template">F5B71A54830849DB92A91EC65AC565AC</source_id>
+        <x>-279</x>
+        <y>-54</y>
+       </Item>
+      </Relationships>
+     </Item>
+    </related_id>
+    <sort_order>896</sort_order>
+    <source_id keyed_name="My Process Workflow Map" type="Workflow Map">729F44042D2A44169E19EC30841911B0</source_id>
+   </Item>
+  </Relationships>
+ </Item>
+</AML>

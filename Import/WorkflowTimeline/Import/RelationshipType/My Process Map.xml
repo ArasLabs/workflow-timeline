@@ -1,0 +1,65 @@
+﻿<AML>
+ <Item type="RelationshipType" id="78EB1C46B3F640858AF33E276AD35593" action="add" dependencyLevel="0">
+  <auto_search>1</auto_search>
+  <behavior>float</behavior>
+  <copy_permissions>0</copy_permissions>
+  <create_related>0</create_related>
+  <hide_in_all>0</hide_in_all>
+  <inc_rel_key_name>1</inc_rel_key_name>
+  <inc_related_key_name>1</inc_related_key_name>
+  <is_list_type>0</is_list_type>
+  <label xml:lang="en">My Process Map</label>
+  <new_show_related>0</new_show_related>
+  <related_notnull>0</related_notnull>
+  <related_option>2</related_option>
+  <relationship_id keyed_name="My Process Map" type="ItemType" name="My Process Map">
+   <Item type="ItemType" id="398019584DBD45718EA400C68E3BF67B" action="add">
+    <allow_private_permission>1</allow_private_permission>
+    <auto_search>0</auto_search>
+    <enforce_discovery>0</enforce_discovery>
+    <hide_where_used>0</hide_where_used>
+    <implementation_type>table</implementation_type>
+    <instance_data>MY_PROCESS_MAP</instance_data>
+    <is_dependent>0</is_dependent>
+    <is_relationship>1</is_relationship>
+    <is_versionable>0</is_versionable>
+    <revisions keyed_name="Default" type="Revision">7FE395DD8B9F4E1090756A34B733D75E</revisions>
+    <show_parameters_tab>1</show_parameters_tab>
+    <structure_view>tabs off</structure_view>
+    <unlock_on_logout>0</unlock_on_logout>
+    <use_src_access>1</use_src_access>
+    <name>My Process Map</name>
+    <Relationships>
+     <Item type="View" id="543E2B4DAC3C41B2A4E87E766CBB3B7D" action="add">
+      <client>js</client>
+      <related_id keyed_name="My Process Map" type="Form">8AFF4BF0715642ABB9E95DFDB488AF67</related_id>
+      <role keyed_name="World" type="Identity">
+       <Item type="Identity" action="get" select="id">
+        <name>World</name>
+       </Item>
+      </role>
+      <show_ssvc>0</show_ssvc>
+      <sort_order>128</sort_order>
+      <source_id keyed_name="My Process Map" type="ItemType" name="My Process Map">398019584DBD45718EA400C68E3BF67B</source_id>
+      <type>default</type>
+     </Item>
+    </Relationships>
+   </Item>
+  </relationship_id>
+  <sort_order>128</sort_order>
+  <source_id keyed_name="My Process" type="ItemType" name="My Process">C1A7A0D798FE4D9E93EC8271E04BE895</source_id>
+  <name>My Process Map</name>
+  <Relationships>
+   <Item type="Relationship View" id="CBBCB1D2E666426C872E04D9D68685A6" action="add">
+    <form keyed_name="My Process Map" type="Form">8AFF4BF0715642ABB9E95DFDB488AF67</form>
+    <related_id keyed_name="World" type="Identity">
+     <Item type="Identity" action="get" select="id">
+      <name>World</name>
+     </Item>
+    </related_id>
+    <sort_order>128</sort_order>
+    <source_id keyed_name="My Process Map" type="RelationshipType">78EB1C46B3F640858AF33E276AD35593</source_id>
+   </Item>
+  </Relationships>
+ </Item>
+</AML>
