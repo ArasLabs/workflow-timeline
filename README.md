@@ -65,6 +65,8 @@ This project's import package includes a sample ItemType called "My Process" tha
 ![screenshot](Screenshots/sample.png)
 *The "My Process Map" tab will display a timeline view of the new item's workflow process.*
 
+>Note: A bug currently prevents the process map from displaying immediately after a new My Process item is created. If the timeline doesn't appear as shown in the screenshot above, close and reopen the item.
+
 ### 2. Configure the View on Your ItemType
 
 The labs_WorkflowTimeline method can be reused for multiple ItemTypes. Once you've applied the project's code tree overlay and import package, follow the steps below to add a timeline view to your own ItemTypes.
