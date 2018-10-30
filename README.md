@@ -6,12 +6,14 @@ This project demonstrates how to implement a timeline view of an item's workflow
 
 Release | Notes
 --------|--------
+[v1.1.0](https://github.com/ArasLabs/workflow-timeline/releases/tag/v1.1.0) | Confirmed support for Aras 11.0 SP15.
 [v1.0.0](https://github.com/ArasLabs/workflow-timeline/releases/tag/v1.0.0) | First release.
 
 #### Supported Aras Versions
 
 Project | Aras
 --------|------
+[v1.1.0](https://github.com/ArasLabs/workflow-timeline/releases/tag/v1.1.0) | 11.0 SP15, 11.0 SP14, 11.0 SP12
 [v1.0.0](https://github.com/ArasLabs/workflow-timeline/releases/tag/v1.0.0) | 11.0 SP12
 
 > Though built and tested using Aras 11.0 SP12, this project may function in other releases of Aras 11.0.
@@ -23,7 +25,7 @@ Project | Aras
 
 ### Pre-requisites
 
-1. Aras Innovator installed (version 11.0 SP12)
+1. Aras Innovator installed (version 11.0 SP12+)
 2. Aras Package Import Utility
 3. aras.labs.WorkflowTimeline package
 4. Code Tree overlay
@@ -64,6 +66,8 @@ This project's import package includes a sample ItemType called "My Process" tha
 
 ![screenshot](Screenshots/sample.png)
 *The "My Process Map" tab will display a timeline view of the new item's workflow process.*
+
+>Note: A bug currently prevents the process map from displaying immediately after a new My Process item is created. If the timeline doesn't appear as shown in the screenshot above, close and reopen the item. See [Issue #4](https://github.com/ArasLabs/workflow-timeline/issues/4).
 
 ### 2. Configure the View on Your ItemType
 
